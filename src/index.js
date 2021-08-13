@@ -16,7 +16,7 @@ var state = struct({
 subscribe(bus, state)
 
 render(html`<${connect(Counter, state, bus)} />`,
-    document.getElementById('content'));
+    document.getElementById('content'))
 
 function Counter ({ count, emit }) {
     console.log('state', count)
@@ -28,3 +28,4 @@ function Counter ({ count, emit }) {
         </div>
     </main>`
 }
+
