@@ -36,9 +36,7 @@ function Dash ({ applicants, emit }) {
         return html`<div className="dashboard waiting">
             <h1>Applicants</h1>
             <ul>
-                <li className="placeholder">
-                    waiting...
-                </li>
+                <li className="placeholder"></li>
             </ul>
         </div>`
     }
