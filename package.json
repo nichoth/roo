@@ -27,6 +27,7 @@
     "ruta3": "^2.0.1"
   },
   "devDependencies": {
+    "babel-plugin-htm": "^3.0.0",
     "browserify": "^16.5.2",
     "budo": "^11.6.4",
     "concurrently": "^6.2.0",

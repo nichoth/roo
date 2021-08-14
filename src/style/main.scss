@@ -3,6 +3,11 @@ body {
         opacity: 0.6;
     }
 
+    .dashboard {
+        max-width: 56rem;
+        margin: 0 auto;
+    }
+
     ul {
         padding: 0;
 
@@ -12,15 +17,25 @@ body {
             background-color: #e6e6e6;
             border: 1px solid;
             margin-bottom: 1rem;
-
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            & > div {
+                display: flex;
+                justify-content: space-around;
+            }
 
-            .applicant-info {
-                margin-right: 1rem;
+            .applicant-info-field {
+                margin-right: 2rem;
                 padding: 0.5rem;
                 border: 1px solid;
                 background-color: white;
-                min-width: 8rem;
+                min-width: 10rem;
+
+                &.ssn {
+                    font-family: monospace;
+                }
             }
 
             .field {
@@ -30,5 +45,20 @@ body {
                 margin-bottom: 0.5rem;
             }
         }
+    }
+}
+
+.edit-pencil {
+    position: relative;
+    top: 6px;
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: blue;
+    text-decoration: none;
+
+    &:hover {
+        color: cyan;
+        cursor: pointer;
     }
 }

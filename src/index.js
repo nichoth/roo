@@ -49,18 +49,28 @@ function Dash ({ applicants, emit }) {
         <ul>
             ${applicants.map((applicant, i) => {
                 return html`<li className="applicant" key=${i}>
-                    <div className="applicant-info name">
-                        <div className="field">Name</div>
-                        ${applicant.firstName + ' ' + applicant.lastName}
+                    <div>
+                        <div className="applicant-info-field name">
+                            <div className="field">Name</div>
+                            ${applicant.firstName + ' ' + applicant.lastName}
+                        </div>
+                        <div className="applicant-info-field occupation">
+                            <div className="field">Occupation</div>
+                            ${applicant.occupation}
+                        </div>
+                        <div className="applicant-info-field ssn">
+                            <div className="field">Social Security Number</div>
+                            <div className="value">
+                                ${applicant.ssn}
+                            </div>
+                        </div>
                     </div>
-                    <div className="applicant-info occupation">
-                        <div className="field">Occupation</div>
-                        ${applicant.occupation}
-                    </div>
-                    <div className="applicant-info ssn">
-                        <div className="field">Social Security Number</div>
-                        ${applicant.ssn}
-                    </div>
+
+                    <a href="/update/${i}" className="edit-pencil"
+                        title="edit"
+                    >
+                        ✏
+                    </a>
                 </li>`
             })}
         </ul>
