@@ -1,9 +1,0 @@
-{
-  "plugins": [
-    ["htm", {
-      "tag": "html",
-      "import": "react",
-      "pragma": "React.createElement"
-    }]
-  ]
-}
