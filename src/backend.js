@@ -63,7 +63,7 @@ function backend () {
                         return reject(new Error('fail'))
                     }
 
-                    applicants.splice(i, 1);
+                    applicants.splice(i, 1)
                     resolve(applicants)
                 }, TIME)
             })

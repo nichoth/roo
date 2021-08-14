@@ -1,5 +1,6 @@
 import { html } from 'htm/react'
-import React, { useState } from 'react';
+// eslint-disable-next-line
+import React, { useState } from 'react'
 
 function connect (App, state, bus) {
     var emit = bus.emit.bind(bus)

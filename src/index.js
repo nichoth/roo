@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom'
 import { html } from 'htm/react'
@@ -44,35 +45,37 @@ function Dash ({ applicants, emit }) {
 
     // { firstName: 'one', lastName: 'one-last-name', occupation: 'bla',
     //     ssn: '123' }
+    /* eslint-disable */
     return html`<div className="dashboard">
         <h1>Applicants</h1>
         <ul>
-            ${applicants.map((applicant, i) => {
-                return html`<li className="applicant" key=${i}>
-                    <div>
-                        <div className="applicant-info-field name">
-                            <div className="field">Name</div>
-                            ${applicant.firstName + ' ' + applicant.lastName}
-                        </div>
-                        <div className="applicant-info-field occupation">
-                            <div className="field">Occupation</div>
-                            ${applicant.occupation}
-                        </div>
-                        <div className="applicant-info-field ssn">
-                            <div className="field">Social Security Number</div>
-                            <div className="value">
-                                ${applicant.ssn}
-                            </div>
+        ${applicants.map((applicant, i) => {
+            return html`<li className="applicant" key=${i}>
+                <div>
+                    <div className="applicant-info-field name">
+                        <div className="field">Name</div>
+                        ${applicant.firstName + ' ' + applicant.lastName}
+                    </div>
+                    <div className="applicant-info-field occupation">
+                        <div className="field">Occupation</div>
+                        ${applicant.occupation}
+                    </div>
+                    <div className="applicant-info-field ssn">
+                        <div className="field">Social Security Number</div>
+                        <div className="value">
+                            ${applicant.ssn}
                         </div>
                     </div>
+                </div>
 
-                    <a href="/update/${i}" className="edit-pencil"
-                        title="edit"
-                    >
-                        ✏
-                    </a>
-                </li>`
-            })}
+                <a href="/update/${i}" className="edit-pencil"
+                    title="edit"
+                >
+                    ✏
+                </a>
+            </li>`
+        })}
         </ul>
     </div>`
+    /* eslint-enable */
 }
