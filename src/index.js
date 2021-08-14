@@ -66,11 +66,13 @@ function Dash ({ applicants, emit }) {
                     </div>
                 </div>
 
-                <a href="/update/${i}" className="edit-pencil"
-                    title="edit"
-                >
-                    ✏
-                </a>
+                <div className="applicant-controls">
+                    <a href="/update/${i}" className="edit-pencil"
+                        title="edit"
+                    >
+                        ✏
+                    </a>
+                </div>
             </li>`
         })}
         </ul>
