@@ -7,6 +7,9 @@ var subscribe = require('./subscribe')
 var evs = require('./EVENTS')
 var connect = require('./connect')
 
+var backend = require('./backend')
+var api = backend()
+
 var bus = Bus({ memo: true })
 
 var state = struct({

@@ -15,6 +15,17 @@ as well, based on your familiarity.
 
 -------------------------------
 
+
+"Add/ Update should take to a form based details screen"
+
+A use for routes.
+
+`/update/:index`
+`/add`
+
+
+---------------------------------------------
+
 Need to mock an API for a backend
 
 * `getApplicants` -- 
@@ -30,9 +41,10 @@ setTimeout(function () {
 var applicants = [
     { name, lastName, occupation, ssn }
 ]
-add()
-// applicants.push(newApplicant)
-// then go back to the home page
+function add() {
+    applicants.push(newApplicant)
+    // then go back to the home page
+}
 
 update(i)
 
@@ -40,4 +52,3 @@ remove(i)
 ```
 
 CRUD operations should go back to the dashboard after success
-
