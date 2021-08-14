@@ -1,15 +1,19 @@
 var TIME = 1000
 
+function isErr () {
+    return (process.env.NODE_ENV === 'test_err')
+}
+
 function backend () {
-    console.log('node env', process.env.NODE_ENV)
+    // console.log('node env', process.env.NODE_ENV)
 
     var applicants = [
-        { firstName: 'one', lastName: 'one-last-name', occupation: 'bla',
-            ssn: '123' },
-        { firstName: 'two', lastName: 'two-last-name', occupation: 'bla2',
-            ssn: '456' },
-        { firstName: 'three', lastName: 'three-last-name', occupation: 'bla3',
-            ssn: '789' }
+        { firstName: 'Alice', lastName: 'lastNameAlice',
+            occupation: 'a job', ssn: '123' },
+        { firstName: 'Bob', lastName: 'lastNameBob',
+            occupation: 'job 2', ssn: '456' },
+        { firstName: 'Carol', lastName: 'lastNameCarol',
+            occupation: 'job 3', ssn: '789' }
     ]
 
     return {
@@ -17,7 +21,7 @@ function backend () {
             // wait 1 second
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    if (process.env.NODE_ENV === 'test_err') {
+                    if (isErr()) {
                         return reject(new Error('fail'))
                     }
 
@@ -29,7 +33,7 @@ function backend () {
         add: function (newOne) {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    if (process.env.NODE_ENV === 'test_err') {
+                    if (isErr()) {
                         return reject(new Error('fail'))
                     }
 
@@ -42,7 +46,7 @@ function backend () {
         update: function (i, newData) {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    if (process.env.NODE_ENV === 'test_err') {
+                    if (isErr()) {
                         return reject(new Error('fail'))
                     }
 
@@ -55,7 +59,7 @@ function backend () {
         remove: function (i) {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    if (process.env.NODE_ENV === 'test_err') {
+                    if (isErr()) {
                         return reject(new Error('fail'))
                     }
 

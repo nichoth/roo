@@ -1,7 +1,30 @@
 body {
-    background-color: pink;
-}
+    ul {
+        padding: 0;
 
-button {
-    margin-right: 1rem;
+        li {
+            list-style: none;
+            padding: 1rem;
+            background-color: #e6e6e6;
+            border: 1px solid;
+            margin-bottom: 1rem;
+
+            display: flex;
+
+            .applicant-info {
+                margin-right: 1rem;
+                padding: 0.5rem;
+                border: 1px solid;
+                background-color: white;
+                min-width: 8rem;
+            }
+
+            .field {
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                border-bottom: 1px solid;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
 }

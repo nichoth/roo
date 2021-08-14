@@ -1,7 +1,8 @@
 var namespace = require('@nichoth/events/namespace')
 
 var evs = namespace({
-    count: ['inc', 'dec']
+    count: ['inc', 'dec'],
+    applicants: ['got']
 })
 
 module.exports = evs

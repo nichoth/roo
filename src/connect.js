@@ -1,5 +1,5 @@
-import { html } from 'htm/preact'
-import { useState } from 'preact/hooks';
+import { html } from 'htm/react'
+import React, { useState } from 'react';
 
 function connect (App, state, bus) {
     var emit = bus.emit.bind(bus)
@@ -11,7 +11,7 @@ function connect (App, state, bus) {
             setState(newState)
         })
 
-        return html`<div class="app">
+        return html`<div className="connector">
             <${App} ...${_state} emit=${emit} />
         </div>`
     }
