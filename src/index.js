@@ -47,35 +47,43 @@ function Dash ({ applicants, emit }) {
     return html`<div className="dashboard">
         <h1>Applicants</h1>
         <ul>
-        ${applicants.map((applicant, i) => {
-            return html`<li className="applicant" key=${i}>
-                <div>
-                    <div className="applicant-info-field name">
-                        <div className="field">Name</div>
-                        ${applicant.firstName + ' ' + applicant.lastName}
-                    </div>
-                    <div className="applicant-info-field occupation">
-                        <div className="field">Occupation</div>
-                        ${applicant.occupation}
-                    </div>
-                    <div className="applicant-info-field ssn">
-                        <div className="field">Social Security Number</div>
-                        <div className="value">
-                            ${applicant.ssn}
+            ${applicants.map((applicant, i) => {
+                return html`<li className="applicant" key=${i}>
+                    <div>
+                        <div className="applicant-info-field name">
+                            <div className="field">Name</div>
+                            ${applicant.firstName + ' ' + applicant.lastName}
+                        </div>
+                        <div className="applicant-info-field occupation">
+                            <div className="field">Occupation</div>
+                            ${applicant.occupation}
+                        </div>
+                        <div className="applicant-info-field ssn">
+                            <div className="field">Social Security Number</div>
+                            <div className="value">
+                                ${applicant.ssn}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div className="applicant-controls">
-                    <a href="/update/${i}" className="edit-pencil"
-                        title="edit"
-                    >
-                        ✏
-                    </a>
-                </div>
-            </li>`
-        })}
+                    <div className="applicant-controls">
+                        <a href="/update/${i}" className="edit-pencil"
+                            title="edit"
+                        >
+                            ✏
+                        </a>
+                    </div>
+                </li>`
+            })}
         </ul>
+
+        <div className="controls">
+            <a href="/add" className="add"
+                title="add applicant"
+            >
+                +
+            </a>
+        </div>
     </div>`
     /* eslint-enable */
 }

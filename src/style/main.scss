@@ -50,7 +50,7 @@ body {
     }
 }
 
-.edit-pencil {
+%btn {
     position: relative;
     top: 6px;
     background-color: transparent;
@@ -63,4 +63,19 @@ body {
         color: cyan;
         cursor: pointer;
     }
+}
+
+.edit-pencil {
+    @extend %btn;
+}
+
+.add {
+    @extend %btn;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.controls {
+    text-align: right;
 }
