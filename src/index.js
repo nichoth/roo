@@ -32,8 +32,13 @@ function Dash ({ applicants, emit }) {
     }, [])
 
     if (applicants.length === 0) {
-        return html`<div className="dashboard">
-            waiting...
+        return html`<div className="dashboard waiting">
+            <h1>Applicants</h1>
+            <ul>
+                <li className="placeholder">
+                    waiting...
+                </li>
+            </ul>
         </div>`
     }
 
