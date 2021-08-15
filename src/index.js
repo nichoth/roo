@@ -26,13 +26,11 @@ function Connector () {
         setState(newState)
     })
 
+    // find which view to use for this path
     var match = router.match(path)
     if (!match) return null
     var { view } = match.action(match)
     var emit = bus.emit.bind(bus)
-
-    // we keep the route path as a part of state and match within
-    // this component
 
     return html`<${view} ...${_state} emit=${emit}
         setRoute=${route.setRoute}
@@ -41,6 +39,8 @@ function Connector () {
 
 route(function onRoute (path) {
     console.log('route', path)
+    // we keep the route path as a part of state
+    // when we set the state here it causes a re-render
     state.path.set(path)
 })
 
