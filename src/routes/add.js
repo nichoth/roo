@@ -1,11 +1,13 @@
 import { html } from 'htm/react'
+// var TextInput = require('@nichoth/forms/src/text-input')
+var TextInput = require('../text-input')
 // eslint-disable-next-line
 import React, { useEffect } from 'react';
 var evs = require('../EVENTS')
 var backend = require('../backend')
 var api = backend()
 
-function Add ({ applicants, emit }) {
+function Add ({ emit, setRoute }) {
 
     /* eslint-disable */
     // return html`<div className="add">
@@ -24,11 +26,21 @@ function Add ({ applicants, emit }) {
         console.log('value', ev.target.elements['first-name'].value)
     }
 
-    return html`<div className="new-applicant">
+    function reset (ev) {
+        // uncomment to go back to dashboard
+        // setRoute('/')
+    }
 
-        <form onSubmit=${saveApplicant} className="add-app-form">
-            <label htmlFor="first-name">First name</label>
-            <input type="text" name="first-name" id="first-name" />
+    return html`<div className="new-applicant">
+        <form onSubmit=${saveApplicant} className="add-app-form"
+            onReset=${reset}
+        >
+            <div>
+                <${TextInput} required=${true} name="first-name"
+                    displayName="first name"
+                />
+            </div>
+
             <div className="add-controls">
                 <button type="reset">Cancel</button>
                 <button type="submit">Save</button>

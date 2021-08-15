@@ -1,3 +1,6 @@
+@use "../../node_modules/@nichoth/forms/src/style/text-input";
+@use "./add";
+
 body {
     .dashboard.waiting {
         opacity: 0.4;
@@ -14,48 +17,68 @@ body {
     .dashboard {
         max-width: 56rem;
         margin: 0 auto;
-    }
 
-    ul {
-        padding: 0;
+        ul {
+            padding: 0;
 
-        li.applicant {
-            list-style: none;
-            padding: 1rem;
-            background-color: #e6e6e6;
-            border: 1px solid;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            
-            & > div:first-child {
-                display: flex;
-                justify-content: left;
-                flex-wrap: wrap;
-            }
-
-            .applicant-info-field {
-                margin-right: 2rem;
-                padding: 0.5rem;
+            li.applicant {
+                list-style: none;
+                padding: 1rem;
+                background-color: #e6e6e6;
                 border: 1px solid;
-                background-color: white;
-                min-width: 11rem;
                 margin-bottom: 1rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                
+                & > div:first-child {
+                    display: flex;
+                    justify-content: left;
+                    flex-wrap: wrap;
+                }
 
-                &.ssn {
-                    font-family: monospace;
+                .applicant-info-field {
+                    margin-right: 2rem;
+                    padding: 0.5rem;
+                    border: 1px solid;
+                    background-color: white;
+                    min-width: 11rem;
+                    margin-bottom: 1rem;
+
+                    &.ssn {
+                        .value {
+                            font-family: monospace;
+                        }
+                    }
+                }
+
+                .field {
+                    font-size: 0.8rem;
+                    text-transform: uppercase;
+                    border-bottom: 1px solid;
+                    margin-bottom: 0.5rem;
                 }
             }
+        }
 
-            .field {
-                font-size: 0.8rem;
-                text-transform: uppercase;
-                border-bottom: 1px solid;
-                margin-bottom: 0.5rem;
+        .edit-pencil {
+            @extend %btn;
+        }
+
+        .add-btn {
+            @extend %btn;
+            &:hover {
+                text-decoration: underline;
             }
         }
+
+        .controls {
+            text-align: right;
+            margin-right: 1rem;
+        }
+
     }
+
 }
 
 %btn {
@@ -73,18 +96,3 @@ body {
     }
 }
 
-.edit-pencil {
-    @extend %btn;
-}
-
-.add-btn {
-    @extend %btn;
-    &:hover {
-        text-decoration: underline;
-    }
-}
-
-.controls {
-    text-align: right;
-    margin-right: 1rem;
-}

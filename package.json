@@ -5,7 +5,7 @@
     "build": "npm run build-js && npm run build-sass",
     "build-sass": "sass src/style/main.scss public/style.css",
     "watch-sass": "sass --watch src/style/main.scss public/style.css",
-    "build-js": "browserify -p esmify -t unassertify -t uglifyify --debug src/index.js > public/bundle.js",
+    "build-js": "browserify -p esmify -t uglifyify --debug src/index.js > public/bundle.js",
     "test-cypress": "npm run build && concurrently --kill-others \"budo src/index.js:bundle.js --dir=public/ --port=9966 --live --pushstate -- -p esmify -dv\" \"cypress open\"",
     "test-cypress-err": "npm run build && concurrently --kill-others \"budo src/index.js:bundle.js --dir=public/ --port=9966 --live --pushstate -- -t [ envify --NODE_ENV test_err ] -p esmify -dv\" \"cypress open\"",
     "test-browser": "browserify test/index.js | tape-run",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@nichoth/events": "^1.1.2",
+    "@nichoth/forms": "^0.0.19",
     "htm": "^3.0.4",
     "observ": "^0.2.0",
     "observ-struct": "^6.0.0",
