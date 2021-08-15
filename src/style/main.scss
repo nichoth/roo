@@ -1,6 +1,14 @@
 body {
     .dashboard.waiting {
         opacity: 0.4;
+        ul {
+            li {
+                list-style: none;
+                min-height: 11vh;
+                min-width: 100%;
+                background-color: #e6e6e6;
+            }
+        }
     }
 
     .dashboard {
@@ -32,7 +40,7 @@ body {
                 padding: 0.5rem;
                 border: 1px solid;
                 background-color: white;
-                min-width: 10rem;
+                min-width: 11rem;
                 margin-bottom: 1rem;
 
                 &.ssn {
@@ -78,4 +86,5 @@ body {
 
 .controls {
     text-align: right;
+    margin-right: 1rem;
 }
