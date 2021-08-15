@@ -1,17 +1,13 @@
 import { html } from 'htm/react'
 // eslint-disable-next-line
 import React, { useEffect, useState } from 'react';
-var evs = require('../EVENTS')
+// var evs = require('../EVENTS')
 var backend = require('../backend')
 var api = backend()
 var TextInput = require('../text-input')
 var SpinningButton = require('../button')
 
 function updateRoute (index) {
-
-    function updateApplicant (ev) {
-        ev.preventDefault()
-    }
 
     return function Update ({ setRoute, applicants, emit }) {
 
@@ -37,6 +33,31 @@ function updateRoute (index) {
             setRoute('/')
         }
 
+        function updateApplicant (ev) {
+            ev.preventDefault()
+            var req = {
+                firstName: ev.target.elements['first-name'].value,
+                lastName: ev.target.elements['last-name'].value,
+                occupation: ev.target.elements['occupation'].value,
+                ssn: ev.target.elements['ssn'].value,
+            }
+
+            setResolving(true)
+
+            api.update(index, req)
+                .then(res => {
+                    console.log('done updating', res)
+                    setResolving(false)
+                    setRoute('/')
+                })
+                .catch(err => {
+                    // TODO: show error
+                    console.log('errrrr', err)
+                    setResolving(false)
+                })
+        }
+
+
         if (!applicant) return null
 
         /* eslint-disable */
@@ -52,24 +73,27 @@ function updateRoute (index) {
 
                 <div>
                     <${TextInput} required=${true} name="last-name"
-                        displayName="last name"
+                        displayName="last name" value=${applicant.lastName}
                     />
                 </div>
 
                 <div>
-                    <${TextInput} required=${true} name="job"
-                        displayName="job"
+                    <${TextInput} required=${true} name="occupation"
+                        displayName="occupation" value=${applicant.occupation}
                     />
                 </div>
 
                 <div>
                     <${TextInput} required=${true} name="ssn"
                         displayName="social security number"
+                        value=${applicant.ssn}
                     />
                 </div>
 
-                <div className="update-controls">
-                    <button type="reset">Cancel</button>
+                <div className="item-controls update-controls">
+                    <${SpinningButton} type="reset" isSpinning=${false}>
+                        Cancel
+                    </${SpinningButton}>
 
                     <${SpinningButton} type="submit" isSpinning=${resolving}>
                         Save

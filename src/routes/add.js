@@ -7,7 +7,7 @@ var backend = require('../backend')
 var api = backend()
 var SpinningButton = require('../button')
 
-function Add ({ emit, setRoute }) {
+function Add ({ setRoute }) {
 
     var [resolving, setResolving] = useState(false)
 
@@ -71,7 +71,7 @@ function Add ({ emit, setRoute }) {
                 />
             </div>
 
-            <div className="add-controls">
+            <div className="item-controls add-controls">
                 <button type="reset">Cancel</button>
 
                 <${SpinningButton} type="submit" isSpinning=${resolving}>
