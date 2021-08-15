@@ -8,7 +8,6 @@ var api = backend()
 var SpinningButton = require('../button')
 
 function Add ({ setRoute }) {
-
     var [resolving, setResolving] = useState(false)
 
     /* eslint-disable */

@@ -30,6 +30,12 @@ body {
         max-width: 56rem;
         margin: 0 auto;
 
+        .applicant-controls {
+            > * {
+                margin-right: 1rem;
+            }
+        }
+
         ul {
             padding: 0;
 
@@ -90,7 +96,21 @@ body {
         }
 
     }
+}
 
+.emoji-btn {
+    @extend %btn;
+}
+
+.trash-btn {
+    // color: rgba(100%, 0%, 0%, 0);
+    // text-shadow: 0 0 0 red;
+    // filter: sepia(1) saturate(100);
+    filter: sepia(1) hue-rotate(193deg) saturate(100);
+
+    &:hover {
+        filter: sepia(1) hue-rotate(152deg) saturate(100);
+    }
 }
 
 %btn {

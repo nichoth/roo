@@ -3,6 +3,7 @@ import { html } from 'htm/react'
 import React, { useEffect } from 'react';
 var evs = require('../EVENTS')
 var backend = require('../backend')
+var Trash = require('../trash')
 var api = backend()
 
 function Dash ({ applicants, emit }) {
@@ -20,6 +21,10 @@ function Dash ({ applicants, emit }) {
                 <li className="placeholder"></li>
             </ul>
         </div>`
+    }
+
+    function del () {
+        console.log('delete')
     }
 
     // { firstName: 'one', lastName: 'one-last-name', occupation: 'bla',
@@ -64,6 +69,9 @@ function Dash ({ applicants, emit }) {
                         >
                             ✏
                         </a>
+                        <${Trash} className=${'trash-btn'} onClick=${del}
+                            title=${'delete applicant'} index=${i}
+                        />
                     </div>
                 </li>`
             })}
