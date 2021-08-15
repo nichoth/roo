@@ -12,11 +12,9 @@ function SpinningButton (props) {
             >
                 <span className="btn-content">${props.children}</span>
             </button>` :
-            html`<div >
-                <button ...${_props}>
-                    ${props.children}
-                </button>
-            </div>`
+            html`<button ...${_props}>
+                ${props.children}
+            </button>`
         }
         </span>`
 }

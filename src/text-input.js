@@ -1,10 +1,13 @@
 import { html } from 'htm/react'
 
 function TextInput (props) {
-    var { name, displayName } = props
+    var { name, displayName, required } = props
+
+    var cl = 'input-group' + (required ? ' required' : '')
+    cl += ' ' + name
 
     return html`<div className="form-stuff">
-        <div className="input-group ${name}">
+        <div className="${cl}">
             <input name="${name}" type="text" placeholder=" "
                 required=${props.required} minLength=${props.minlength ||
                     props.minLength}

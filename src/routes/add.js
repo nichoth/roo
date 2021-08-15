@@ -72,12 +72,11 @@ function Add ({ emit, setRoute }) {
             </div>
 
             <div className="add-controls">
+                <button type="reset">Cancel</button>
 
                 <${SpinningButton} type="submit" isSpinning=${resolving}>
                     Save
                 </${SpinningButton}>
-
-                <button type="reset">Cancel</button>
             </div>
         </form>
 
