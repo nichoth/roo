@@ -27,8 +27,8 @@ function Add ({ emit, setRoute }) {
     }
 
     function reset (ev) {
-        // uncomment to go back to dashboard
-        // setRoute('/')
+        // clear the form and navigate back home
+        setRoute('/')
     }
 
     return html`<div className="new-applicant">
