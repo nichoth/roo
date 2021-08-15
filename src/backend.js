@@ -30,6 +30,18 @@ function backend () {
             })
         },
 
+        getIndex: function (index) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (isErr()) {
+                        return reject(new Error('fail'))
+                    }
+
+                    resolve(applicants[index])
+                }, TIME)
+            })
+        },
+
         add: function (newOne) {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {

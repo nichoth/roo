@@ -28,3 +28,28 @@ Start a localhost server and rebuild the site when any js or css changes
 ```
 $ npm start
 ```
+
+-------------------------------------
+
+### npm version
+
+Run some scripts before increasing the version number
+```
+$ npm version <major|minor|patch>
+```
+
+#### preversion
+This will run the npm scripts `lint` and `deps`, which will throw an error
+if eslint is bad or there are dependencies that are not being used.
+
+#### postversion
+After increasing the version number, it will push to github and also publish
+to `npm`.
+
+-----------------------------------------
+
+## test
+
+```
+$ npm test
+```
