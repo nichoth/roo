@@ -59,7 +59,7 @@ function Dash ({ applicants, emit }) {
         </ul>
 
         <div className="controls">
-            <a href="/add" className="add"
+            <a href="/add" className="add-btn"
                 title="add applicant"
             >
                 +

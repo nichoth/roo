@@ -77,7 +77,7 @@ body {
     @extend %btn;
 }
 
-.add {
+.add-btn {
     @extend %btn;
     &:hover {
         text-decoration: underline;
