@@ -1,4 +1,4 @@
-var TIME = 1000
+const TIME = 1000
 
 function isErr () {
     return (process.env.NODE_ENV === 'test_err')

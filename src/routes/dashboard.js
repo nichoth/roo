@@ -7,13 +7,14 @@ var api = backend()
 
 function Dash ({ applicants, emit }) {
     useEffect(() => {
+        console.log('did mount')
         api.getApplicants()
             .then(res => {
                 emit(evs.applicants.got, res)
             })
     }, [])
 
-    if (applicants.length === 0) {
+    if (!applicants) {
         return html`<div className="dashboard waiting">
             <h1>Applicants</h1>
             <ul>

@@ -12,8 +12,8 @@ var route = require('route-event')()
 var bus = Bus({ memo: true })
 
 var state = struct({
-    applicants: observ([]),
-    path: observ('/')
+    applicants: observ(null),
+    path: observ('')
 })
 
 subscribe(bus, state)
@@ -27,12 +27,16 @@ function Connector () {
     })
 
     var match = router.match(path)
+    if (!match) return null
     var { view } = match.action(match)
     var emit = bus.emit.bind(bus)
 
-    return html`<div className="connector">
-        <${view} ...${_state} emit=${emit} setRoute=${route.setRoute} />
-    </div>`
+    // we keep the route path as a part of state and match within
+    // this component
+
+    return html`<${view} ...${_state} emit=${emit}
+        setRoute=${route.setRoute}
+    />`
 }
 
 route(function onRoute (path) {

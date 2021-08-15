@@ -1,11 +1,10 @@
 import { html } from 'htm/react'
-// var TextInput = require('@nichoth/forms/src/text-input')
 var TextInput = require('../text-input')
 // eslint-disable-next-line
 import React, { useEffect } from 'react';
-var evs = require('../EVENTS')
-var backend = require('../backend')
-var api = backend()
+// var evs = require('../EVENTS')
+// var backend = require('../backend')
+// var api = backend()
 
 function Add ({ emit, setRoute }) {
 
@@ -26,7 +25,7 @@ function Add ({ emit, setRoute }) {
         console.log('first name', ev.target.elements['first-name'].value)
     }
 
-    function reset (ev) {
+    function reset () {
         // clear the form and navigate back home
         setRoute('/')
     }
@@ -38,6 +37,24 @@ function Add ({ emit, setRoute }) {
             <div>
                 <${TextInput} required=${true} name="first-name"
                     displayName="first name"
+                />
+            </div>
+
+            <div>
+                <${TextInput} required=${true} name="last-name"
+                    displayName="last name"
+                />
+            </div>
+
+            <div>
+                <${TextInput} required=${true} name="job"
+                    displayName="job"
+                />
+            </div>
+
+            <div>
+                <${TextInput} required=${true} name="ssn"
+                    displayName="social security number"
                 />
             </div>
 

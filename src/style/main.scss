@@ -2,8 +2,18 @@
 @use "./add";
 
 body {
+    button {
+        cursor: pointer;
+    }
+
+    #content {
+        margin-bottom: 4rem;
+    }
+
     .dashboard.waiting {
         opacity: 0.4;
+        cursor: wait;
+
         ul {
             li {
                 list-style: none;
