@@ -26,7 +26,18 @@ function Dash ({ applicants, emit }) {
     //     ssn: '123' }
     /* eslint-disable */
     return html`<div className="dashboard">
-        <h1>Applicants</h1>
+        <header>
+            <h1>Applicants</h1>
+
+            <div className="controls">
+                <a href="/add" className="add-btn"
+                    title="add applicant"
+                >
+                    +
+                </a>
+            </div>
+        </header>
+        
         <ul>
             ${applicants.map((applicant, i) => {
                 return html`<li className="applicant" key=${i}>
@@ -58,13 +69,6 @@ function Dash ({ applicants, emit }) {
             })}
         </ul>
 
-        <div className="controls">
-            <a href="/add" className="add-btn"
-                title="add applicant"
-            >
-                +
-            </a>
-        </div>
     </div>`
     /* eslint-enable */
 }

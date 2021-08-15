@@ -2,3 +2,12 @@
     max-width: 40rem;
     margin: 0 auto;
 }
+
+// override our dependency
+.form-stuff {
+    .input-group {
+        label {
+            color: #4c4c4c;
+        }
+    }
+}

@@ -23,7 +23,7 @@ function Add ({ emit, setRoute }) {
             }, {})
 
         console.log('save', vals)
-        console.log('value', ev.target.elements['first-name'].value)
+        console.log('first name', ev.target.elements['first-name'].value)
     }
 
     function reset (ev) {
