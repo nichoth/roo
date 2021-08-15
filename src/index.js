@@ -22,6 +22,7 @@ function Connector () {
     var [_state, setState] = useState(state())
     var { path } = _state
 
+    // connect our `state` object to the component state
     state(function onChange (newState) {
         setState(newState)
     })

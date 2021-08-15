@@ -16,8 +16,15 @@ as well, based on your familiarity.
 
 -------------------------------
 
+This is an application that uses React.
+
 We are using a *mock* backend that has a 1 second timeout before it
-resolves a promise, to be sort of like a network request.
+resolves a promise, to be sort of like a network request. See the constant
+`TIME` defined in `/src/backend`.
 
-See the constant 'TIME` defined in `/src/backend`.
+## develop
 
+Start a localhost server and rebuild the site when any js or css changes
+```
+$ npm start
+```

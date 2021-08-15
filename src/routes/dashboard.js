@@ -7,7 +7,6 @@ var api = backend()
 
 function Dash ({ applicants, emit }) {
     useEffect(() => {
-        console.log('did mount')
         api.getApplicants()
             .then(res => {
                 emit(evs.applicants.got, res)
