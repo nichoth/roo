@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom'
+// import React, { useState } from 'react';
+// import ReactDOM from 'react-dom'
+var React = require('react')
+var { useState } = require('react')
+var ReactDom = require('react-dom')
 // import { html } from 'htm/react'
 // var Bus = require('@nichoth/events')
 // var subscribe = require('./subscribe')
