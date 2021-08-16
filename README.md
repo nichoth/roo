@@ -61,6 +61,7 @@ static server based on browserify.
 -----------------------------------
 
 ## structure
+### application state
 The application state is kept in a top level observable state object, defined 
 in `/src/state.js`. This way you can write tests for the application state
 without needing React or the DOM. As an example, see `test/index.js`.
@@ -86,6 +87,9 @@ test('example test', t => {
     t.end()
 })
 ```
+
+### jsx
+We are not using jsx or babel here. Instead, this uses [htm](https://www.npmjs.com/package/htm), a module that uses plain javascript with tagged templates.
 
 -----------------------------------------
 
