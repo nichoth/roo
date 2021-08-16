@@ -90,7 +90,10 @@ function Dash ({ applicants, emit }) {
                 // memory, but react re-renders before it has been removed
                 // from the application state... meaning you get an error
                 // 'cannot read firstName of undefined'
+                // I think it's unlikely this would happen in real life b/c
+                // there is more latency between network requests & re-renders
                 if (!applicant) return null
+
                 return html`<li className="applicant" key=${i}>
                     <${Fields} applicant=${applicant} />
 
