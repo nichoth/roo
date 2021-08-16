@@ -45,19 +45,21 @@ function Add ({ setRoute }) {
         >
             <div>
                 <${TextInput} required=${true} name="first-name"
-                    displayName="first name"
+                    displayName="first name" pattern="[a-zA-Z]+"
+                    title="Use letters only"
                 />
             </div>
 
             <div>
                 <${TextInput} required=${true} name="last-name"
-                    displayName="last name"
+                    displayName="last name" pattern="[a-zA-Z]+"
+                    title="Use letters only"
                 />
             </div>
 
             <div>
-                <${TextInput} required=${true} name="job"
-                    displayName="job"
+                <${TextInput} required=${true} name="occupation"
+                    displayName="occupation"
                 />
             </div>
 
