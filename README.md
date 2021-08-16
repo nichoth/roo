@@ -42,23 +42,52 @@ static server based on browserify.
 -----------------------------------
 
 ## structure
+The application state is kept in a top level observable state object, defined 
+in `/src/state.js`. This way you can write tests for the application state
+without needing React or the DOM. As an example, see `test/index.js`.
 
+```js
+// test/index.js
+var bus = Bus({ memo: true })
+subscribe(bus, state)
+// the application state is now connected to the event bus
 
+test('example test', t => {
+    t.equal(state.applicants(), null, 'should start with null applicants')
+    var apps = { firstName: 'a', lastName: 'b', ssn: '123', occupation: 'c'}
+    bus.emit(evs.applicants.got, [
+        // list of applicants here
+        apps
+    ])
+    t.equal(state.applicants().length, 1, 'should update the state')
+    t.end()
+})
+```
+
+-----------------------------------------
+
+## routes
+
+We are using client side routing via [route-event](https://www.npmjs.com/package/route-event). We only call `ReactDOM.render` once, when the page first loads.
+Subsequent route changes are handled in application state via a `path` key, so
+we re-render the application whenever the route changes, instead of making a 
+new request to the server for a new page.
 
 -------------------------------------
 
-### npm version
+## npm version
 
 Run some scripts before increasing the version number
 ```
 $ npm version <major|minor|patch>
 ```
 
-#### preversion
-This will run the npm scripts `lint` and `deps`, which will throw an error
-if eslint is bad or there are dependencies that are not being used.
+### preversion
+This will run the npm scripts `lint`, `deps`, and `test`, which will throw an error
+if eslint is bad or there are dependencies that are not being used, or if the
+tests fail.
 
-#### postversion
+### postversion
 After increasing the version number, it will push to github and also publish
 to `npm`.
 

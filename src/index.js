@@ -9,7 +9,6 @@ var route = require('route-event')()
 var state = require("./state")
 
 var bus = Bus({ memo: true })
-
 subscribe(bus, state)
 
 function Connector () {
