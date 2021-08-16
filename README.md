@@ -24,9 +24,6 @@ Thanks to free hosting, you can [view this demo on the internet](https://roo-dem
 
 ## todo
 
-* UX could be better on the form validation in the edit/create forms.
-  - validate things as you are typing (the `blur` event) instead of when
-    you submit the form
 * should display the SSN better. You could show it with hyphens: `123-12-1234`
 * write real tests in cypress
   - test the error states -- should show errors in the UI
