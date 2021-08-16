@@ -25,7 +25,7 @@ Thanks to free hosting, you can [view this demo on the internet](https://roo-dem
 ## todo
 
 * should do better form validation on the edit/create forms.
-  - validate the SSN -- should be only numeric
+  - validate the SSN -- should be only numeric, 9 digits
   - validate that the names are alphabet letters
   - validate that the occupation name is alpha-numeric
 * should display the SSN better. You could show it with hyphens: `123-12-1234`
