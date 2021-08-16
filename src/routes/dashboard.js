@@ -72,7 +72,8 @@ function Dash ({ applicants, emit }) {
         </header>
 
         ${confirmDel[0] ?
-            // confirmDel[i] is the index
+            // confirmDel[1] is the index
+            // confirmDel[0] is boolean -- are we showing the confirm modal?
             html`<${ConfirmDelModal}
                     applicant=${applicants[confirmDel[1]]}
                     onCancel=${cancelModalConfirm}
