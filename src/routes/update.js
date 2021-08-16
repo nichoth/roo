@@ -14,18 +14,15 @@ function updateRoute (index) {
         var [resolving, setResolving] = useState(false)
         var [applicant, setApplicant] = useState(null)
 
-        console.log('state here', applicant)
-
         // fetch the applicant here in case the applicants are not loaded
         // into application state
         useEffect(function () {
             api.getIndex(index)
                 .then(res => {
                     setApplicant(res)
-                    console.log('res', res)
                 })
                 .catch(err => {
-                    console.log('errrrr', err)
+                    console.log('todo -- show errors in the UI', err)
                 })
         }, [])
 
@@ -46,13 +43,12 @@ function updateRoute (index) {
 
             api.update(index, req)
                 .then(res => {
-                    console.log('done updating', res)
                     setResolving(false)
                     setRoute('/')
                 })
                 .catch(err => {
                     // TODO: show error
-                    console.log('errrrr', err)
+                    console.log('todo -- show errors', err)
                     setResolving(false)
                 })
         }
@@ -68,26 +64,28 @@ function updateRoute (index) {
                 <div>
                     <${TextInput} required=${true} name="first-name"
                         displayName="first name" value=${applicant.firstName}
+                        title="Use letters only" pattern="[a-zA-Z]+"
                     />
                 </div>
 
                 <div>
                     <${TextInput} required=${true} name="last-name"
                         displayName="last name" value=${applicant.lastName}
+                        title="Use letters only" pattern="[a-zA-Z]+"
                     />
                 </div>
 
                 <div>
                     <${TextInput} required=${true} name="occupation"
                         displayName="occupation" value=${applicant.occupation}
-                        title="Use letters only"
                     />
                 </div>
 
                 <div>
                     <${TextInput} required=${true} name="ssn"
                         displayName="social security number"
-                        value=${applicant.ssn}
+                        value=${applicant.ssn} pattern="[0-9]+"
+                        title="9 digit number"
                     />
                 </div>
 

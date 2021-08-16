@@ -66,7 +66,7 @@ function Add ({ setRoute }) {
             <div>
                 <${TextInput} required=${true} name="ssn" maxLength="9"
                     displayName="social security number" minLength="9"
-                    pattern="[0-9]+"
+                    pattern="[0-9]+" title="9 digit number"
                 />
             </div>
 

@@ -32,7 +32,6 @@ function Connector () {
 }
 
 route(function onRoute (path) {
-    console.log('route', path)
     // we keep the route path as a part of state
     // when we set the state here it causes a re-render
     state.path.set(path)

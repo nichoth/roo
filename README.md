@@ -24,9 +24,9 @@ Thanks to free hosting, you can [view this demo on the internet](https://roo-dem
 
 ## todo
 
-* should do better form validation on the edit/create forms.
-  - validate that the names are alphabet letters
-  - validate that the occupation name is alpha-numeric
+* UX could be better on the form validation in the edit/create forms.
+  - validate things as you are typing (the `blur` event) instead of when
+    you submit the form
 * should display the SSN better. You could show it with hyphens: `123-12-1234`
 * write real tests in cypress
   - test the error states -- should show errors in the UI
@@ -78,10 +78,9 @@ subscribe(bus, state)
 
 test('example test', t => {
     t.equal(state.applicants(), null, 'should start with null applicants')
-    var apps = { firstName: 'a', lastName: 'b', ssn: '123', occupation: 'c'}
     bus.emit(evs.applicants.got, [
         // list of applicants here
-        apps
+      { firstName: 'a', lastName: 'b', ssn: '123', occupation: 'c'}
     ])
     t.equal(state.applicants().length, 1, 'should update the state')
     t.end()
