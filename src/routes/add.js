@@ -16,7 +16,7 @@ function Add ({ setRoute }) {
         var req = {
             firstName: ev.target.elements['first-name'].value,
             lastName: ev.target.elements['last-name'].value,
-            occupation: ev.target.elements['job'].value,
+            occupation: ev.target.elements['occupation'].value,
             ssn: ev.target.elements['ssn'].value,
         }
 

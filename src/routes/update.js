@@ -80,6 +80,7 @@ function updateRoute (index) {
                 <div>
                     <${TextInput} required=${true} name="occupation"
                         displayName="occupation" value=${applicant.occupation}
+                        title="Use letters only"
                     />
                 </div>
 
