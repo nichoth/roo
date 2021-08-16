@@ -1,9 +1,10 @@
 import { html } from 'htm/react'
 // eslint-disable-next-line
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 var evs = require('../EVENTS')
 var backend = require('../backend')
 var Trash = require('../trash')
+var Button = require('../Button')
 var api = backend()
 
 function Dash ({ applicants, emit }) {
@@ -14,6 +15,8 @@ function Dash ({ applicants, emit }) {
             })
     }, [])
 
+    var [confirmDel, setConfirmDel] = useState([false])
+
     if (!applicants) {
         return html`<div className="dashboard waiting">
             <h1>Applicants</h1>
@@ -23,8 +26,17 @@ function Dash ({ applicants, emit }) {
         </div>`
     }
 
-    function del () {
-        console.log('delete')
+    function del (i) {
+        return function (ev) {
+            ev.preventDefault()
+            document.body.classList.toggle('modal-open')
+            setConfirmDel([true, i])
+        }
+    }
+
+    function cancelModalConfirm () {
+        document.body.classList.toggle('modal-open')
+        setConfirmDel([false])
     }
 
     // { firstName: 'one', lastName: 'one-last-name', occupation: 'bla',
@@ -42,6 +54,14 @@ function Dash ({ applicants, emit }) {
                 </a>
             </div>
         </header>
+
+        ${confirmDel[0] ?
+            html`<${ConfirmDelModal}
+                    applicant=${applicants[confirmDel[1]]}
+                    onCancel=${cancelModalConfirm}
+                />` :
+                null
+        }
         
         <ul>
             ${applicants.map((applicant, i) => {
@@ -69,8 +89,10 @@ function Dash ({ applicants, emit }) {
                         >
                             ✏
                         </a>
-                        <${Trash} className=${'trash-btn'} onClick=${del}
-                            title=${'delete applicant'} index=${i}
+                        <${Trash} className=${'trash-btn'}
+                            onClick=${del(i)}
+                            title=${'delete applicant'}
+                            index=${i}
                         />
                     </div>
                 </li>`
@@ -79,6 +101,28 @@ function Dash ({ applicants, emit }) {
 
     </div>`
     /* eslint-enable */
+}
+
+function ConfirmDelModal ({ applicant, onCancel }) {
+    function cancelDel (ev) {
+        ev.preventDefault()
+        onCancel()
+    }
+
+    return html`<div className="confirm-modal">
+        <div>
+            Delete applicant ${applicant.firstName}
+
+            <div className="modal-controls">
+                <div>
+                    <${Button} onClick=${cancelDel} className="cancel-delete">
+                            Cancel
+                        <//>
+                    <${Button} className="really-delete">Delete<//>
+                </div>
+            </div>
+        </div>
+    </div>`
 }
 
 module.exports = Dash

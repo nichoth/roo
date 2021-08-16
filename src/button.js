@@ -4,6 +4,7 @@ function SpinningButton (props) {
     var { isSpinning } = props
     var _props = {...props}
     delete _props.isSpinning
+
     return html`<span className="form-stuff">
         ${isSpinning ?
             html`<button ...${_props} className=${
