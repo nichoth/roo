@@ -16,18 +16,21 @@ as well, based on your familiarity.
 
 -------------------------------
 
-This is an application that uses React.
-
-We are using a *mock* backend that has a 1 second timeout before it
-resolves a promise, to be sort of like a network request. See the constant
-`TIME` defined in `/src/backend`.
-
 ## develop
 
 Start a localhost server and rebuild the site when any js or css changes
 ```
 $ npm start
 ```
+
+This is an application (not a dependency for an application) that uses React.
+
+We are using a *mock* backend that has a 1 second timeout before it
+resolves a promise, to be sort of like a network request. See the constant
+`TIME` defined in `/src/backend`.
+
+This will persist your changes in memory only. To reset the application state,
+just refresh the browser.
 
 -------------------------------------
 
@@ -53,3 +56,10 @@ to `npm`.
 ```
 $ npm test
 ```
+
+Run cypress tests:
+
+```
+$ npm run test-cypress
+```
+This will open the cypress GUI.

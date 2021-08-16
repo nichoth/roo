@@ -2,7 +2,7 @@ import { html } from 'htm/react'
 var TextInput = require('../text-input')
 // eslint-disable-next-line
 import React, { useState } from 'react';
-var evs = require('../EVENTS')
+// var evs = require('../EVENTS')
 var backend = require('../backend')
 var api = backend()
 var SpinningButton = require('../button')
@@ -11,9 +11,6 @@ function Add ({ setRoute }) {
     var [resolving, setResolving] = useState(false)
 
     /* eslint-disable */
-    // return html`<div className="add">
-    //     add a person
-    // </div>`
     function saveApplicant (ev) {
         ev.preventDefault()
         var req = {

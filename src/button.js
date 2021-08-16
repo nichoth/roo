@@ -5,14 +5,7 @@ function SpinningButton (props) {
     var _props = {...props}
     delete _props.isSpinning
 
-    // var cl = isSpinning ?
-    //     'spinning ' + (_props.class || _props.className) :
-    //     (_props.class || _props.className)
-
-
-        // <button ...${_props} className=${cl}>
-        // </button>
-
+    /* eslint-disable */
     return html`<span className="form-stuff">
         ${isSpinning ?
             html`<button ...${_props} className=${
@@ -26,6 +19,7 @@ function SpinningButton (props) {
             </button>`
         }
         </span>`
+    /* eslint-enable */
 }
 
 module.exports = SpinningButton

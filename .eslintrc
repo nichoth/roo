@@ -2,5 +2,6 @@
     "extends": ["minlint"],
     "parserOptions": {
         "sourceType": "module",
+        "ecmaVersion": 2018
     }
 }
