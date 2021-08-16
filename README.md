@@ -52,14 +52,22 @@ to `npm`.
 -----------------------------------------
 
 ## test
+This is an example of end-to-end testing using cypress. The 
+command `npm run test-cypress` will serve the app from your local machine and
+also start the cypress GUI, which is where we would write tests -- see
+`cypress/integration`.
 
-```
-$ npm test
-```
+To test error states, run `npm run test-cypress-err`.
+
+This will start the app with an env variable set like `NODE_ENV = test_err`.
+Use this to test error responses from the *mock* API server.
 
 Run cypress tests:
-
 ```
 $ npm run test-cypress
 ```
 This will open the cypress GUI.
+
+Any non-UI based testing (for example, testing application state) should be
+done with `npm test-browser`. This will start a browser environment also,
+but without the GUI interface of cypress.

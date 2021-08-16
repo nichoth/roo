@@ -14,7 +14,7 @@ var applicants = [
 ]
 
 function backend () {
-    // console.log('node env', process.env.NODE_ENV)
+    // we use process.env.NODE_ENV to test the error states
 
     return {
         getApplicants: function () {
