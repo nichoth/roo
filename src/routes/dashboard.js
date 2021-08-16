@@ -1,6 +1,8 @@
-import { html } from 'htm/react'
+// import { html } from 'htm/react'
 // eslint-disable-next-line
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
+var React = require('react')
+var { useEffect, useState } = require('react')
 var evs = require('../EVENTS')
 var backend = require('../backend')
 var Trash = require('../trash')
@@ -19,12 +21,12 @@ function Dash ({ applicants, emit }) {
     var [isDeleting, setIsDeleting] = useState(false)
 
     if (!applicants) {
-        return html`<div className="dashboard waiting">
+        return <div className="dashboard waiting">
             <h1>Applicants</h1>
             <ul>
                 <li className="placeholder"></li>
             </ul>
-        </div>`
+        </div>
     }
 
     function del (i) {
@@ -59,7 +61,7 @@ function Dash ({ applicants, emit }) {
     // { firstName: 'one', lastName: 'one-last-name', occupation: 'bla',
     //     ssn: '123' }
     /* eslint-disable */
-    return html`<div className="dashboard">
+    return <div className="dashboard">
         <header>
             <h1>Applicants</h1>
 
@@ -72,66 +74,66 @@ function Dash ({ applicants, emit }) {
             </div>
         </header>
 
-        ${confirmDel[0] ?
+        {confirmDel[0] ?
             // confirmDel[1] is the index
             // confirmDel[0] is boolean -- are we showing the confirm modal?
-            html`<${ConfirmDelModal}
-                    applicant=${applicants[confirmDel[1]]}
-                    onCancel=${cancelModalConfirm}
-                    onDelete=${reallyDeleteApplicant(confirmDel[1])}
-                    isDeleting=${isDeleting}
-                />` :
-                null
+            <ConfirmDelModal
+                applicant={applicants[confirmDel[1]]}
+                onCancel={cancelModalConfirm}
+                onDelete={reallyDeleteApplicant(confirmDel[1])}
+                isDeleting={isDeleting}
+            /> :
+            null
         }
         
         <ul>
-            ${applicants.map((applicant, i) => {
+            {applicants.map((applicant, i) => {
                 // this is for a weird bug where we remove applicant 3 from
                 // memory, but react re-renders before it has been removed
                 // from the application state... meaning you get an error
                 // 'cannot read firstName of undefined'
                 if (!applicant) return null
-                return html`<li className="applicant" key=${i}>
-                    <${Fields} applicant=${applicant} />
+                return <li className="applicant" key={i}>
+                    <Fields applicant={applicant} />
 
                     <div className="applicant-controls">
-                        <a href="/update/${i}" className="edit-pencil"
+                        <a href={'/update/' + i} className="edit-pencil"
                             title="edit"
                         >
                             ✏
                         </a>
-                        <${Trash} className=${'trash-btn'}
-                            onClick=${del(i)}
-                            title=${'delete applicant'}
-                            index=${i}
+                        <Trash className={'trash-btn'}
+                            onClick={del(i)}
+                            title={'delete applicant'}
+                            index={i}
                         />
                     </div>
-                </li>`
+                </li>
             })}
         </ul>
 
-    </div>`
+    </div>
     /* eslint-enable */
 }
 
 function Fields ({ applicant }) {
     if (!applicant) return null
-    return html`<div>
+    return <div>
         <div className="applicant-info-field name">
             <div className="field">Name</div>
-            ${applicant.firstName + ' ' + applicant.lastName}
+            {applicant.firstName + ' ' + applicant.lastName}
         </div>
         <div className="applicant-info-field occupation">
             <div className="field">Occupation</div>
-            ${applicant.occupation}
+            {applicant.occupation}
         </div>
         <div className="applicant-info-field ssn">
             <div className="field">Social Security Number</div>
             <div className="value">
-                ${applicant.ssn}
+                {applicant.ssn}
             </div>
         </div>
-    </div>`
+    </div>
 }
 
 function ConfirmDelModal ({ applicant, onCancel, onDelete, isDeleting }) {
@@ -140,28 +142,28 @@ function ConfirmDelModal ({ applicant, onCancel, onDelete, isDeleting }) {
         onCancel(applicant)
     }
 
-    return html`<div className="confirm-modal">
+    return <div className="confirm-modal">
         <div>
             <h2>Delete applicant?</h2>
 
             <hr />
 
-            <${Fields} applicant=${applicant} />
+            <Fields applicant={applicant} />
 
             <div className="modal-controls">
                 <div>
-                    <${Button} className="cancel-delete" onClick=${cancelDel}>
+                    <Button className="cancel-delete" onClick={cancelDel}>
                         Cancel
-                    <//>
-                    <${Button} className="really-delete" onClick=${onDelete}
-                        isSpinning=${isDeleting}
+                    </Button>
+                    <Button className="really-delete" onClick={onDelete}
+                        isSpinning={isDeleting}
                     >
                         Delete
-                    <//>
+                    </Button>
                 </div>
             </div>
         </div>
-    </div>`
+    </div>
 }
 
 module.exports = Dash

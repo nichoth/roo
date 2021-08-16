@@ -1,6 +1,8 @@
-import { html } from 'htm/react'
+// import { html } from 'htm/react'
 // eslint-disable-next-line
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
+var React = require('react')
+var { useEffect, useState } = require('react');
 var backend = require('../backend')
 var api = backend()
 var ApplicantForm = require('../applicant-form')
@@ -55,11 +57,11 @@ function updateRoute (index) {
         if (!applicant) return null
 
         /* eslint-disable */
-        return html`<div className="update-applicant">
-            <${ApplicantForm} resolving=${resolving} applicant=${applicant}
-                onSubmit=${updateApplicant} onReset=${reset}
+        return <div className="update-applicant">
+            <ApplicantForm resolving={resolving} applicant={applicant}
+                onSubmit={updateApplicant} onReset={reset}
             />
-        </div>`
+        </div>
         /* eslint-enable */
     }
 }

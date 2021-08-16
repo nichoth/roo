@@ -1,6 +1,5 @@
-import { html } from 'htm/react'
 // eslint-disable-next-line
-import React from 'react';
+var React = require('react')
 var TextInput = require('./text-input')
 var SpinningButton = require('./button')
 
@@ -10,47 +9,47 @@ function ApplicantForm (props) {
     applicant = applicant || {}
 
     /* eslint-disable */
-    return html` <form onSubmit=${onSubmit} className="update-app-form"
-        onReset=${onReset}
+    return <form onSubmit={onSubmit} className="update-app-form"
+        onReset={onReset}
     >
         <div>
-            <${TextInput} required=${true} name="first-name"
-                displayName="first name" value=${applicant.firstName || ''}
+            <TextInput required={true} name="first-name"
+                displayName="first name" value={applicant.firstName || ''}
                 title="Use letters only" pattern="[a-zA-Z]+"
             />
         </div>
 
         <div>
-            <${TextInput} required=${true} name="last-name"
-                displayName="last name" value=${applicant.lastName || ''}
+            <TextInput required={true} name="last-name"
+                displayName="last name" value={applicant.lastName || ''}
                 title="Use letters only" pattern="[a-zA-Z]+"
             />
         </div>
 
         <div>
-            <${TextInput} required=${true} name="occupation"
-                displayName="occupation" value=${applicant.occupation || ''}
+            <TextInput required={true} name="occupation"
+                displayName="occupation" value={applicant.occupation || ''}
             />
         </div>
 
         <div>
-            <${TextInput} required=${true} name="ssn"
+            <TextInput required={true} name="ssn"
                 displayName="social security number"
-                value=${applicant.ssn || ''} pattern="[0-9]+"
+                value={applicant.ssn || ''} pattern="[0-9]+"
                 title="9 digit number"
             />
         </div>
 
         <div className="item-controls update-controls">
-            <${SpinningButton} type="reset" isSpinning=${false} key=${0}>
+            <SpinningButton type="reset" isSpinning={false} key={0}>
                 Cancel
-            </${SpinningButton}>
+            </SpinningButton>
 
-            <${SpinningButton} type="submit" isSpinning=${resolving} key=${1}>
+            <SpinningButton type="submit" isSpinning={resolving} key={1}>
                 Save
-            </${SpinningButton}>
+            </SpinningButton>
         </div>
-    </form>`
+    </form>
     /* eslint-enable */
 }
 

@@ -1,12 +1,12 @@
 {
   "scripts": {
     "start": "npm run build && concurrently --kill-others \"npm run serve\" \"npm run watch-sass\"",
-    "serve": "budo src/index.js:bundle.js --dir=public/ --live --pushstate --open -- -p esmify -dv",
+    "serve": "budo src/index.js:bundle.js --dir=public/ --live --pushstate --open -- -t [ babelify --presets [ @babel/preset-env @babel/preset-react ] ] -dv",
     "build": "npm run build-js && npm run build-sass",
     "build-sass": "sass src/style/main.scss public/style.css",
     "watch-sass": "sass --watch src/style/main.scss public/style.css",
-    "//build-js": "browserify src/index.js -o public/bundle.js -t [ babelify --presets [ @babel/preset-react ] ] -p esmify  -t uglifyify --debug",
-    "build-js": "browserify src/index.js -o public/bundle.js -t [ babelify --presets [ @babel/preset-react @babel/preset-env ] ]",
+    "//build-js": "browserify src/index.js -o public/bundle.js -t [ babelify --presets [ @babel/preset-react ] ] -t uglifyify --debug",
+    "build-js": "browserify --debug src/index.js -o public/bundle.js -t [ babelify --presets [ @babel/preset-react @babel/preset-env ] ]",
     "test-cypress": "npm run build && concurrently --kill-others \"budo src/index.js:bundle.js --dir=public/ --port=9966 --live --pushstate -- -p esmify -dv\" \"cypress open\"",
     "test-cypress-err": "npm run build && concurrently --kill-others \"budo src/index.js:bundle.js --dir=public/ --port=9966 --live --pushstate -- -t [ envify --NODE_ENV test_err ] -p esmify -dv\" \"cypress open\"",
     "test-browser": "browserify test/index.js | tape-run | tap-spec",
