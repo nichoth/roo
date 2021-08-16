@@ -68,6 +68,11 @@ without needing React or the DOM. As an example, see `test/index.js`.
 
 ```js
 // test/index.js
+var test = require('tape')
+var state = require('../src/state')
+var subscribe = require('../src/subscribe')
+var evs = require('../src/EVENTS')
+
 var bus = Bus({ memo: true })
 subscribe(bus, state)
 // the application state is now connected to the event bus
