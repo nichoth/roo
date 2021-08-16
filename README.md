@@ -16,6 +16,12 @@ as well, based on your familiarity.
 
 -------------------------------
 
+Thanks to free hosting, you can [view this demo on the internet](https://roo-demo.netlify.app/).
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3f0b9f4f-2c6e-4fe8-ad6a-be7f8520824d/deploy-status)](https://app.netlify.com/sites/roo-demo/deploys)
+
+------------------------------------
+
 ## develop
 
 Start a localhost server and rebuild the site when any js or css changes
