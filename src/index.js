@@ -2,19 +2,13 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom'
 import { html } from 'htm/react'
-var struct = require('observ-struct')
-var observ = require('observ')
 var Bus = require('@nichoth/events')
 var subscribe = require('./subscribe')
 var router = require('./routes')
 var route = require('route-event')()
+var state = require("./state")
 
 var bus = Bus({ memo: true })
-
-var state = struct({
-    applicants: observ(null),
-    path: observ('')
-})
 
 subscribe(bus, state)
 

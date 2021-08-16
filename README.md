@@ -34,6 +34,19 @@ just refresh the browser.
 
 -------------------------------------
 
+The JS is being bundled with
+[browserify](https://www.npmjs.com/package/browserify),
+and the development server is [budo](https://www.npmjs.com/package/budo), a
+static server based on browserify.
+
+-----------------------------------
+
+## structure
+
+
+
+-------------------------------------
+
 ### npm version
 
 Run some scripts before increasing the version number
@@ -71,3 +84,7 @@ This will open the cypress GUI.
 Any non-UI based testing (for example, testing application state) should be
 done with `npm test-browser`. This will start a browser environment also,
 but without the GUI interface of cypress.
+
+Anything that does not depend on a browser environment, like testing an API
+adapter module, should go in `test/index.js`. This test file is run from node,
+so cannot use any browser APIs.
