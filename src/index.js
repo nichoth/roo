@@ -37,4 +37,5 @@ route(function onRoute (path) {
     state.path.set(path)
 })
 
-ReactDOM.render(html`<${Connector} />`, document.getElementById('content'))
+ReactDOM.render(<p>test</p>, document.getElementById('content'))
+// ReactDOM.render(html`<${Connector} />`, document.getElementById('content'))
