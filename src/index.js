@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom'
-import { html } from 'htm/react'
+// import { html } from 'htm/react'
 var Bus = require('@nichoth/events')
 var subscribe = require('./subscribe')
 var router = require('./routes')
@@ -37,5 +37,10 @@ route(function onRoute (path) {
     state.path.set(path)
 })
 
-ReactDOM.render(<p>test</p>, document.getElementById('content'))
+function test () {
+    return <p>test</p>;
+}
+
+ReactDOM.render(React.createElement(test, {}, []),
+    document.getElementById('content'))
 // ReactDOM.render(html`<${Connector} />`, document.getElementById('content'))

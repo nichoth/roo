@@ -17,7 +17,8 @@
     "build": "npm run build-js && npm run build-sass",
     "build-sass": "sass src/style/main.scss public/style.css",
     "watch-sass": "sass --watch src/style/main.scss public/style.css",
-    "build-js": "browserify -t [ babelify --sourceMapsAbsolute --presets [ @babel/preset-react ] ] -p esmify  -t uglifyify --debug src/index.js > public/bundle.js",
+    "//build-js": "browserify src/index.js -o public/bundle.js -t [ babelify --presets [ @babel/preset-react ] ] -p esmify  -t uglifyify --debug",
+    "build-js": "browserify src/index.js -o public/bundle.js -t [ babelify --presets [ @babel/preset-react @babel/preset-env ] ] -p esmify",
     "test-cypress": "npm run build && concurrently --kill-others \"budo src/index.js:bundle.js --dir=public/ --port=9966 --live --pushstate -- -p esmify -dv\" \"cypress open\"",
     "test-cypress-err": "npm run build && concurrently --kill-others \"budo src/index.js:bundle.js --dir=public/ --port=9966 --live --pushstate -- -t [ envify --NODE_ENV test_err ] -p esmify -dv\" \"cypress open\"",
     "test-browser": "browserify test/index.js | tape-run | tap-spec",
@@ -40,6 +41,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
+    "@babel/plugin-syntax-jsx": "^7.14.5",
+    "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "babelify": "^10.0.0",
     "browserify": "^16.5.2",
