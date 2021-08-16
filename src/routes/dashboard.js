@@ -39,6 +39,14 @@ function Dash ({ applicants, emit }) {
         setConfirmDel([false])
     }
 
+    function reallyDeleteApplicant (index) {
+        return function (ev) {
+            console.log('really delete them', index)
+            ev.preventDefault()
+            // api.remove(index)
+        }
+    }
+
     // { firstName: 'one', lastName: 'one-last-name', occupation: 'bla',
     //     ssn: '123' }
     /* eslint-disable */
@@ -59,6 +67,7 @@ function Dash ({ applicants, emit }) {
             html`<${ConfirmDelModal}
                     applicant=${applicants[confirmDel[1]]}
                     onCancel=${cancelModalConfirm}
+                    onDelete=${reallyDeleteApplicant(confirmDel[1])}
                 />` :
                 null
         }
@@ -66,22 +75,7 @@ function Dash ({ applicants, emit }) {
         <ul>
             ${applicants.map((applicant, i) => {
                 return html`<li className="applicant" key=${i}>
-                    <div>
-                        <div className="applicant-info-field name">
-                            <div className="field">Name</div>
-                            ${applicant.firstName + ' ' + applicant.lastName}
-                        </div>
-                        <div className="applicant-info-field occupation">
-                            <div className="field">Occupation</div>
-                            ${applicant.occupation}
-                        </div>
-                        <div className="applicant-info-field ssn">
-                            <div className="field">Social Security Number</div>
-                            <div className="value">
-                                ${applicant.ssn}
-                            </div>
-                        </div>
-                    </div>
+                    <${Fields} applicant=${applicant} />
 
                     <div className="applicant-controls">
                         <a href="/update/${i}" className="edit-pencil"
@@ -103,22 +97,47 @@ function Dash ({ applicants, emit }) {
     /* eslint-enable */
 }
 
-function ConfirmDelModal ({ applicant, onCancel }) {
+function Fields ({ applicant }) {
+    return html`<div>
+        <div className="applicant-info-field name">
+            <div className="field">Name</div>
+            ${applicant.firstName + ' ' + applicant.lastName}
+        </div>
+        <div className="applicant-info-field occupation">
+            <div className="field">Occupation</div>
+            ${applicant.occupation}
+        </div>
+        <div className="applicant-info-field ssn">
+            <div className="field">Social Security Number</div>
+            <div className="value">
+                ${applicant.ssn}
+            </div>
+        </div>
+    </div>`
+}
+
+function ConfirmDelModal ({ applicant, onCancel, onDelete }) {
     function cancelDel (ev) {
         ev.preventDefault()
-        onCancel()
+        onCancel(applicant)
     }
 
     return html`<div className="confirm-modal">
         <div>
-            Delete applicant ${applicant.firstName}
+            <h2>Delete applicant</h2>
+
+            <hr />
+
+            <${Fields} applicant=${applicant} />
 
             <div className="modal-controls">
                 <div>
                     <${Button} onClick=${cancelDel} className="cancel-delete">
-                            Cancel
-                        <//>
-                    <${Button} className="really-delete">Delete<//>
+                        Cancel
+                    <//>
+                    <${Button} className="really-delete" onClick=${onDelete}>
+                        Delete
+                    <//>
                 </div>
             </div>
         </div>

@@ -9,6 +9,10 @@ body{
         height: 100vh;
         overflow-y: hidden;
     }
+
+    h2 {
+        font-size: 1.2rem;
+    }
 }
 
 .confirm-modal {
@@ -27,6 +31,10 @@ body{
 
     .modal-controls {
         text-align: right;
+        position: absolute;
+        bottom: 1rem;
+        right: 0;
+
         > div {
             button {
                 margin-right: 1rem;
@@ -39,10 +47,24 @@ body{
             background: white;
             position: absolute;
             width: 70%;
-            height: 50%;
+            min-height: 50%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+
+            .modal-controls {
+                margin: 0 auto;
+                width: 100%;
+                // margin-bottom: 1rem;
+            }
+
+            > div {
+                gap: 1rem;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-bottom: 4rem;
+            }
         }
     }
 }
@@ -97,28 +119,7 @@ body {
                     display: flex;
                     justify-content: left;
                     flex-wrap: wrap;
-                }
-
-                .applicant-info-field {
-                    margin-right: 2rem;
-                    padding: 0.5rem;
-                    border: 1px solid;
-                    background-color: white;
-                    min-width: 11rem;
-                    margin-bottom: 1rem;
-
-                    &.ssn {
-                        .value {
-                            font-family: monospace;
-                        }
-                    }
-                }
-
-                .field {
-                    font-size: 0.8rem;
-                    text-transform: uppercase;
-                    border-bottom: 1px solid;
-                    margin-bottom: 0.5rem;
+                    gap: 2rem;
                 }
             }
         }
@@ -140,6 +141,26 @@ body {
         }
 
     }
+}
+
+.applicant-info-field {
+    padding: 0.5rem;
+    border: 1px solid;
+    background-color: white;
+    min-width: 11rem;
+
+    &.ssn {
+        .value {
+            font-family: monospace;
+        }
+    }
+}
+
+.field {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid;
+    margin-bottom: 0.5rem;
 }
 
 .emoji-btn {
