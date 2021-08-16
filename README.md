@@ -29,6 +29,10 @@ Thanks to free hosting, you can [view this demo on the internet](https://roo-dem
   - validate that the names are alphabet letters
   - validate that the occupation name is alpha-numeric
 * should display the SSN better. You could show it with hyphens: `123-12-1234`
+* write real tests in cypress
+  - test the error states -- should show errors in the UI
+  - test the happy states
+* write real tests in node -- `test/index.js`
 
 ------------------------------------
 
