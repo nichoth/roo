@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 var evs = require('../EVENTS')
 var backend = require('../backend')
 var Trash = require('../trash')
-var Button = require('../Button')
+var Button = require('../button')
 var api = backend()
 
 function Dash ({ applicants, emit }) {
