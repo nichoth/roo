@@ -35,6 +35,7 @@ function Dash ({ applicants, emit }) {
         }
     }
 
+    // ---------- close the modal ------------------------
     function cancelModalConfirm () {
         document.body.classList.toggle('modal-open')
         setConfirmDel([false])
@@ -52,6 +53,7 @@ function Dash ({ applicants, emit }) {
                 })
         }
     }
+    // ---------- /close the modal ------------------------
 
     // { firstName: 'one', lastName: 'one-last-name', occupation: 'bla',
     //     ssn: '123' }
