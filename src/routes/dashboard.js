@@ -44,9 +44,9 @@ function Dash ({ applicants, emit }) {
         return function (ev) {
             ev.preventDefault()
             setIsDeleting(true)
-            document.body.classList.toggle('modal-open')
             api.remove(index)
-                .then(res => {
+                .then(() => {
+                    document.body.classList.toggle('modal-open')
                     setIsDeleting(false)
                     setConfirmDel([false])
                 })
