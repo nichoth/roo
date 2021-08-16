@@ -1,16 +1,4 @@
 {
-  "browserify": {
-    "transform": [
-      [
-        "babelify",
-        {
-          "stage": [
-            0
-          ]
-        }
-      ]
-    ]
-  },
   "scripts": {
     "start": "npm run build && concurrently --kill-others \"npm run serve\" \"npm run watch-sass\"",
     "serve": "budo src/index.js:bundle.js --dir=public/ --live --pushstate --open -- -p esmify -dv",
