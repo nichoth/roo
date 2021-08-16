@@ -19,8 +19,6 @@ function Connector () {
 
     // connect our `state` object to the component state
     state(function onChange (newState) {
-        delete newState._diff
-        console.log('newstate', newState)
         setState(newState)
     })
 
