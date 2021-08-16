@@ -92,7 +92,7 @@ function Dash ({ applicants, emit }) {
                 // 'cannot read firstName of undefined'
                 if (!applicant) return null
                 return html`<li className="applicant" key=${i}>
-                    <${Fields} applicant=${applicant} />
+                    <${Fields} applicant=${applicant} key=${i} />
 
                     <div className="applicant-controls">
                         <a href="/update/${i}" className="edit-pencil"
