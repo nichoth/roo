@@ -1,11 +1,23 @@
 {
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "stage": [
+            0
+          ]
+        }
+      ]
+    ]
+  },
   "scripts": {
     "start": "npm run build && concurrently --kill-others \"npm run serve\" \"npm run watch-sass\"",
     "serve": "budo src/index.js:bundle.js --dir=public/ --live --pushstate --open -- -p esmify -dv",
     "build": "npm run build-js && npm run build-sass",
     "build-sass": "sass src/style/main.scss public/style.css",
     "watch-sass": "sass --watch src/style/main.scss public/style.css",
-    "build-js": "browserify -t [ babelify --sourceMapsAbsolute --presets [ @babel/preset-react ] ] -p esmify -t uglifyify --debug src/index.js > public/bundle.js",
+    "build-js": "browserify -t [ babelify --sourceMapsAbsolute --presets [ @babel/preset-react ] ] -p esmify  -t uglifyify --debug src/index.js > public/bundle.js",
     "test-cypress": "npm run build && concurrently --kill-others \"budo src/index.js:bundle.js --dir=public/ --port=9966 --live --pushstate -- -p esmify -dv\" \"cypress open\"",
     "test-cypress-err": "npm run build && concurrently --kill-others \"budo src/index.js:bundle.js --dir=public/ --port=9966 --live --pushstate -- -t [ envify --NODE_ENV test_err ] -p esmify -dv\" \"cypress open\"",
     "test-browser": "browserify test/index.js | tape-run | tap-spec",
