@@ -71,7 +71,9 @@ function Add ({ setRoute }) {
             </div>
 
             <div className="item-controls add-controls">
-                <button type="reset">Cancel</button>
+                <${SpinningButton} type="reset" isSpinning=${false}>
+                    Cancel
+                <//>
 
                 <${SpinningButton} type="submit" isSpinning=${resolving}>
                     Save

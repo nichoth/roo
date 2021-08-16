@@ -16,6 +16,7 @@ function Dash ({ applicants, emit }) {
     }, [])
 
     var [confirmDel, setConfirmDel] = useState([false])
+    var [isDeleting, setIsDeleting] = useState(false)
 
     if (!applicants) {
         return html`<div className="dashboard waiting">
@@ -41,9 +42,13 @@ function Dash ({ applicants, emit }) {
 
     function reallyDeleteApplicant (index) {
         return function (ev) {
-            console.log('really delete them', index)
             ev.preventDefault()
-            // api.remove(index)
+            setIsDeleting(true)
+            api.remove(index)
+                .then(res => {
+                    setIsDeleting(false)
+                    setConfirmDel([false])
+                })
         }
     }
 
@@ -64,10 +69,12 @@ function Dash ({ applicants, emit }) {
         </header>
 
         ${confirmDel[0] ?
+            // confirmDel[i] is the index
             html`<${ConfirmDelModal}
                     applicant=${applicants[confirmDel[1]]}
                     onCancel=${cancelModalConfirm}
                     onDelete=${reallyDeleteApplicant(confirmDel[1])}
+                    isDeleting=${isDeleting}
                 />` :
                 null
         }
@@ -116,7 +123,7 @@ function Fields ({ applicant }) {
     </div>`
 }
 
-function ConfirmDelModal ({ applicant, onCancel, onDelete }) {
+function ConfirmDelModal ({ applicant, onCancel, onDelete, isDeleting }) {
     function cancelDel (ev) {
         ev.preventDefault()
         onCancel(applicant)
@@ -124,7 +131,7 @@ function ConfirmDelModal ({ applicant, onCancel, onDelete }) {
 
     return html`<div className="confirm-modal">
         <div>
-            <h2>Delete applicant</h2>
+            <h2>Delete applicant?</h2>
 
             <hr />
 
@@ -132,10 +139,12 @@ function ConfirmDelModal ({ applicant, onCancel, onDelete }) {
 
             <div className="modal-controls">
                 <div>
-                    <${Button} onClick=${cancelDel} className="cancel-delete">
+                    <${Button} className="cancel-delete" onClick=${cancelDel}>
                         Cancel
                     <//>
-                    <${Button} className="really-delete" onClick=${onDelete}>
+                    <${Button} className="really-delete" onClick=${onDelete}
+                        isSpinning=${isDeleting}
+                    >
                         Delete
                     <//>
                 </div>
