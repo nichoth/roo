@@ -1,7 +1,7 @@
 import { html } from 'htm/react'
 
 function TextInput (props) {
-    var { name, displayName, required } = props
+    var { name, displayName, required, requirements } = props
 
     var cl = 'input-group' + (required ? ' required' : '')
     cl += ' ' + name
@@ -9,6 +9,7 @@ function TextInput (props) {
     var _props = {...props}
     delete _props.value
     delete _props.displayName
+    delete _props.requirements
 
     return html`<div className="form-stuff">
         <div className="${cl}">
@@ -20,6 +21,10 @@ function TextInput (props) {
                 id="${name}"
             />
             <label htmlFor=${name}>${displayName}</label>
+            ${requirements ?
+                html`<div className="requirements">${requirements}</div>` :
+                null
+            }
         </div>
     </div>`
 }

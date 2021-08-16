@@ -32,6 +32,9 @@ Thanks to free hosting, you can [view this demo on the internet](https://roo-dem
   - test the error states -- should show errors in the UI
   - test the happy states
 * write real tests in node -- `test/index.js`
+* refactor so that the form to add an applicant and the form the edit an 
+  applicant use the same component. The difference is that the 'edit' form
+  is pre-filled with some data.
 
 ------------------------------------
 

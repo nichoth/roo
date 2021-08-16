@@ -47,6 +47,7 @@ function Add ({ setRoute }) {
                 <${TextInput} required=${true} name="first-name"
                     displayName="first name" pattern="[a-zA-Z]+"
                     title="Use letters only"
+                    requirements="Should be alphabetic only"
                 />
             </div>
 
@@ -54,6 +55,7 @@ function Add ({ setRoute }) {
                 <${TextInput} required=${true} name="last-name"
                     displayName="last name" pattern="[a-zA-Z]+"
                     title="Use letters only"
+                    requirements="Should be alphabetic only"
                 />
             </div>
 
@@ -67,6 +69,7 @@ function Add ({ setRoute }) {
                 <${TextInput} required=${true} name="ssn" maxLength="9"
                     displayName="social security number" minLength="9"
                     pattern="[0-9]+" title="9 digit number"
+                    requirements="Should be a 9 digit number"
                 />
             </div>
 

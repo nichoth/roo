@@ -1,0 +1,59 @@
+// override our dependency
+.form-stuff {
+    .input-group {
+        &.required {
+            label {
+                &:after {
+                    content: '*';
+                }
+            }
+        }
+
+        input {
+            margin-bottom: 1rem;
+            // When input is...
+            //   1. NOT empty
+            //   2. NOT in focus
+            //   3. NOT valid
+            &:invalid:not(:focus):not(:placeholder-shown) {
+                border-bottom: 4px solid red;
+                & ~ .requirements {
+                    box-shadow: 0px 0px 5px red;
+                    display: block!important;
+                    max-height: 200px!important;
+                    padding: 0.5rem;
+                }
+            }
+
+            & ~ .requirements {
+                display: none;
+            }
+
+            // When that invalid input becomes in focus
+            // (and also still isn't empty)
+            // &:invalid:focus:not(:placeholder-shown) {
+            //     // Show the more robust requirement instructions below.
+            //     & ~ .requirements {
+            //         display: block!important;
+            //         max-height: 200px;
+            //         padding: 0 30px 20px 50px;
+            //     }
+            // }
+
+            &:focus ~ label,
+            // when it's not empty
+            // hide the *
+            &:not(:placeholder-shown) ~ label {
+                &:after {
+                    content: '';
+                }
+            }
+        }
+
+        // use a darker color for placeholder text
+        label {
+            color: #4c4c4c;
+        }
+    }
+}
+

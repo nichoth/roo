@@ -2,30 +2,3 @@
     max-width: 40rem;
     margin: 0 auto;
 }
-
-// override our dependency
-.form-stuff {
-    .input-group {
-        &.required {
-            label {
-                &:after {
-                    content: '*';
-                }
-            }
-        }
-
-        input:focus ~ label,
-        // when it's not empty
-        // hide the *
-        input:not(:placeholder-shown) ~ label {
-            &:after {
-                content: '';
-            }
-        }
-
-        // use a darker color for placeholder text
-        label {
-            color: #4c4c4c;
-        }
-    }
-}
