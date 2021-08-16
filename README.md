@@ -137,12 +137,12 @@ $ npm run test-cypress
 ```
 This will open the cypress GUI.
 
-### test in node
-
+### test with `tape-run`
 Any non-UI based testing (for example, testing application state) should be
 done with `npm test-browser`. This will start a browser environment also,
 but without the GUI interface of cypress.
 
+### test in node
 Anything that does not depend on a browser environment, like testing an API
 adapter module, should go in `test/index.js`. This test file is run from node,
 so cannot use any browser APIs.
