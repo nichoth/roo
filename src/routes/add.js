@@ -62,8 +62,8 @@ function Add ({ setRoute }) {
             </div>
 
             <div>
-                <${TextInput} required=${true} name="ssn"
-                    displayName="social security number"
+                <${TextInput} required=${true} name="ssn" maxLength="9"
+                    displayName="social security number" minLength="9"
                 />
             </div>
 

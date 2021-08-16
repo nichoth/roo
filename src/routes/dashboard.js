@@ -46,7 +46,8 @@ function Dash ({ applicants, emit }) {
             ev.preventDefault()
             setIsDeleting(true)
             api.remove(index)
-                .then(() => {
+                .then(res => {
+                    emit(evs.applicants.got, res)
                     document.body.classList.toggle('modal-open')
                     setIsDeleting(false)
                     setConfirmDel([false])
@@ -85,6 +86,11 @@ function Dash ({ applicants, emit }) {
         
         <ul>
             ${applicants.map((applicant, i) => {
+                // this is for a weird bug where we remove applicant 3 from
+                // memory, but react re-renders before it has been removed
+                // from the application state... meaning you get an error
+                // 'cannot read firstName of undefined'
+                if (!applicant) return null
                 return html`<li className="applicant" key=${i}>
                     <${Fields} applicant=${applicant} />
 
@@ -109,6 +115,7 @@ function Dash ({ applicants, emit }) {
 }
 
 function Fields ({ applicant }) {
+    if (!applicant) return null
     return html`<div>
         <div className="applicant-info-field name">
             <div className="field">Name</div>
