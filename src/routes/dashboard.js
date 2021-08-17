@@ -1,6 +1,4 @@
-// import { html } from 'htm/react'
 // eslint-disable-next-line
-// import React, { useEffect, useState } from 'react';
 var React = require('react')
 var { useEffect, useState } = require('react')
 var evs = require('../EVENTS')

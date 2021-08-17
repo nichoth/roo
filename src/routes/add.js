@@ -1,11 +1,8 @@
-import { html } from 'htm/react'
-var TextInput = require('../text-input')
 // eslint-disable-next-line
-import React, { useState } from 'react';
-// var evs = require('../EVENTS')
+var React = require('react')
+var { useState } = require('react')
 var backend = require('../backend')
 var api = backend()
-// var SpinningButton = require('../button')
 var ApplicantForm = require('../applicant-form')
 
 function Add ({ setRoute }) {
@@ -40,12 +37,11 @@ function Add ({ setRoute }) {
         setRoute('/')
     }
 
-    return html`<div className="new-applicant">
-        <${ApplicantForm} resolving=${resolving} applicant=${null}
-            onSubmit=${saveApplicant} onReset=${reset}
+    return <div className="new-applicant">
+        <ApplicantForm resolving={resolving} applicant={null}
+            onSubmit={saveApplicant} onReset={reset}
         />
-    </div>`
-
+    </div>
     /* eslint-enable */
 }
 

@@ -1,14 +1,12 @@
-// import React, { useState } from 'react';
-// import ReactDOM from 'react-dom'
+// eslint-disable-next-line
 var React = require('react')
 var { useState } = require('react')
 var ReactDOM = require('react-dom')
-// import { html } from 'htm/react'
 var Bus = require('@nichoth/events')
 var subscribe = require('./subscribe')
 var router = require('./routes')
 var route = require('route-event')()
-var state = require("./state")
+var state = require('./state')
 
 var bus = Bus({ memo: true })
 subscribe(bus, state)
@@ -37,6 +35,4 @@ route(function onRoute (path) {
     state.path.set(path)
 })
 
-// ReactDOM.render(<Test />,
-//     document.getElementById('content'))
 ReactDOM.render(<Connector />, document.getElementById('content'))

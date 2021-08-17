@@ -2,7 +2,7 @@
 // eslint-disable-next-line
 // import React, { useEffect, useState } from 'react';
 var React = require('react')
-var { useEffect, useState } = require('react');
+var { useEffect, useState } = require('react')
 var backend = require('../backend')
 var api = backend()
 var ApplicantForm = require('../applicant-form')
