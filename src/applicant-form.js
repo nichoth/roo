@@ -16,6 +16,7 @@ function ApplicantForm (props) {
             <TextInput required={true} name="first-name"
                 displayName="first name" value={applicant.firstName || ''}
                 title="Use letters only" pattern="[a-zA-Z]+"
+                requirements="Use letters only"
             />
         </div>
 
@@ -23,12 +24,14 @@ function ApplicantForm (props) {
             <TextInput required={true} name="last-name"
                 displayName="last name" value={applicant.lastName || ''}
                 title="Use letters only" pattern="[a-zA-Z]+"
+                requirements="Use letters only"
             />
         </div>
 
         <div>
             <TextInput required={true} name="occupation"
                 displayName="occupation" value={applicant.occupation || ''}
+                requirements="Should be alphanumeric"
             />
         </div>
 
@@ -37,6 +40,9 @@ function ApplicantForm (props) {
                 displayName="social security number"
                 value={applicant.ssn || ''} pattern="[0-9]+"
                 title="9 digit number"
+                requirements="Should be a 9 digit number"
+                maxLength={9}
+                minLength={9}
             />
         </div>
 
