@@ -62,7 +62,7 @@ We are using jsx via [babelify](https://www.npmjs.com/package/babelify).
 
 ### lint
 We are using [eslint](https://www.npmjs.com/package/eslint) as an npm script --
-`npm run lint`. This get run prior to increasing the version number.
+`npm run lint`. This gets run prior to increasing the version number.
 
 Typically you would do some work on this repo, then run
 `npm version <major|minor|patch>`. Changing the npm version will create a new
