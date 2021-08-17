@@ -57,6 +57,20 @@ static server based on browserify.
 
 -----------------------------------
 
+### jsx
+We are using jsx via [babelify](https://www.npmjs.com/package/babelify).
+
+### lint
+We are using [eslint](https://www.npmjs.com/package/eslint) as an npm script --
+`npm run lint`. This get run prior to increasing the version number.
+
+Typically you would do some work on this repo, then run
+`npm version <major|minor|patch>`. Changing the npm version will create a new
+commit & tag in git, so making it possibly the basis for a new deployment.
+
+
+-------------------------------------
+
 ## structure
 ### application state
 The application state is kept in a top level observable state object, defined 
@@ -85,12 +99,9 @@ test('example test', t => {
 })
 ```
 
-### jsx
-We are not using jsx or babel here. Instead, this uses [htm](https://www.npmjs.com/package/htm), a module that uses plain javascript with tagged templates.
-
 -----------------------------------------
 
-## routes
+### routes
 
 We are using client side routing via [route-event](https://www.npmjs.com/package/route-event). We only call `ReactDOM.render` once, when the page first loads.
 Subsequent route changes are handled in application state via a `path` key, so
