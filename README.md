@@ -142,6 +142,7 @@ To test error states, run `npm run test-cypress-err`.
 
 This will start the app with an env variable set like `NODE_ENV = test_err`.
 Use this to test error responses from the *mock* API server.
+**Still need to do this**
 
 ### test in cypress
 Run cypress tests:
