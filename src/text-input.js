@@ -1,4 +1,5 @@
-import { html } from 'htm/react'
+// eslint-disable-next-line
+var React = require('react')
 
 function TextInput (props) {
     var { name, displayName, required, requirements } = props
@@ -11,22 +12,22 @@ function TextInput (props) {
     delete _props.displayName
     delete _props.requirements
 
-    return html`<div className="form-stuff">
-        <div className="${cl}">
-            <input ...${_props} defaultValue=${props.value} name="${name}"
-                type="text" placeholder=" "
-                required=${props.required} minLength=${props.minlength ||
+    return <div className="form-stuff">
+        <div className={cl}>
+            <input {..._props} defaultValue={props.value} name={name}
+                type='text' placeholder=" "
+                required={props.required} minLength={props.minlength ||
                     props.minLength}
-                maxLength=${props.maxlength || props.maxLength}
-                id="${name}"
+                maxLength={props.maxlength || props.maxLength}
+                id={name}
             />
-            <label htmlFor=${name}>${displayName}</label>
-            ${requirements ?
-                html`<div className="requirements">${requirements}</div>` :
+            <label htmlFor={name}>{displayName}</label>
+            {requirements ?
+                <div className="requirements">{requirements}</div> :
                 null
             }
         </div>
-    </div>`
+    </div>
 }
 
 module.exports = TextInput

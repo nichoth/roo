@@ -4,15 +4,15 @@ var Add = require('./add')
 var Update = require('./update')
 
 router.addRoute('/', function indexRoute () {
-    return { view: Dash }
+    return { View: Dash }
 })
 
 router.addRoute('/add', function indexRoute () {
-    return { view: Add }
+    return { View: Add }
 })
 
 router.addRoute('/update/:index', function updateRoute ({ params }) {
-    return { view: Update(params.index) }
+    return { View: Update(params.index) }
 })
 
 module.exports = router

@@ -1,24 +1,25 @@
-import { html } from 'htm/react'
+var React = require('react')
 
 function SpinningButton (props) {
     var { isSpinning } = props
     var _props = {...props}
     delete _props.isSpinning
 
+    var cl = (props.class || props.className)
+
     /* eslint-disable */
-    return html`<span className="form-stuff">
-        ${isSpinning ?
-            html`<button ...${_props} className=${
-                ((props.class || props.className) + ' spinning')}
-                disabled=${true}
+    return <span className="form-stuff">
+        {isSpinning ?
+            <button {..._props} className={cl + ' spinning'}
+                disabled={true} type={props.type || 'button' }
             >
-                <span className="btn-content">${props.children}</span>
-            </button>` :
-            html`<button ...${_props}>
-                <span className="btn-content">${props.children}</span>
-            </button>`
+                <span className="btn-content">{props.children}</span>
+            </button> :
+            <button {..._props} type={props.type || 'button'}>
+                <span className="btn-content">{props.children}</span>
+            </button>
         }
-        </span>`
+        </span>
     /* eslint-enable */
 }
 

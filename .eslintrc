@@ -1,7 +1,36 @@
 {
-    "extends": ["minlint"],
+    "extends": [
+        "minlint",
+        "eslint:recommended",
+        "plugin:react/all"
+    ],
+    "parser": "@babel/eslint-parser",
     "parserOptions": {
-        "sourceType": "module",
-        "ecmaVersion": 2018
+        "requireConfigFile": false,
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "babelOptions": {
+            "presets": ["@babel/preset-react"]
+        }
+    },
+    "rules": {
+        "react/prop-types": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/destructuring-assignment": [0, "always"],
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "react/jsx-first-prop-new-line": [0],
+        "react/jsx-no-literals": [0],
+        "react/jsx-max-props-per-line": [0],
+        "react/jsx-closing-tag-location": 0,
+        "react/jsx-curly-newline": "off" ,
+        "react/jsx-sort-props": "off",
+        "react/jsx-newline": "off",
+        "react/jsx-wrap-multiline": "off",
+        "react/jsx-wrap-multilines": "off",
+        "react/forbid-component-props": "off",
+        "react/jsx-max-depth": "off",
+        "react/no-multi-comp": "off"
     }
 }

@@ -1,12 +1,12 @@
 // eslint-disable-next-line
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom'
-import { html } from 'htm/react'
+var React = require('react')
+var { useState } = require('react')
+var ReactDOM = require('react-dom')
 var Bus = require('@nichoth/events')
 var subscribe = require('./subscribe')
 var router = require('./routes')
 var route = require('route-event')()
-var state = require("./state")
+var state = require('./state')
 
 var bus = Bus({ memo: true })
 subscribe(bus, state)
@@ -23,12 +23,10 @@ function Connector () {
     // find which view to use for this path
     var match = router.match(path)
     if (!match) return null
-    var { view } = match.action(match)
+    var { View } = match.action(match)
     var emit = bus.emit.bind(bus)
 
-    return html`<${view} ...${_state} emit=${emit}
-        setRoute=${route.setRoute}
-    />`
+    return <View {..._state} emit={emit} setRoute={route.setRoute} />
 }
 
 route(function onRoute (path) {
@@ -37,4 +35,4 @@ route(function onRoute (path) {
     state.path.set(path)
 })
 
-ReactDOM.render(html`<${Connector} />`, document.getElementById('content'))
+ReactDOM.render(<Connector />, document.getElementById('content'))

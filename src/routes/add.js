@@ -1,11 +1,9 @@
-import { html } from 'htm/react'
-var TextInput = require('../text-input')
 // eslint-disable-next-line
-import React, { useState } from 'react';
-// var evs = require('../EVENTS')
+var React = require('react')
+var { useState } = require('react')
 var backend = require('../backend')
 var api = backend()
-var SpinningButton = require('../button')
+var ApplicantForm = require('../applicant-form')
 
 function Add ({ setRoute }) {
     var [resolving, setResolving] = useState(false)
@@ -39,53 +37,11 @@ function Add ({ setRoute }) {
         setRoute('/')
     }
 
-    return html`<div className="new-applicant">
-        <form onSubmit=${saveApplicant} className="add-app-form"
-            onReset=${reset}
-        >
-            <div>
-                <${TextInput} required=${true} name="first-name"
-                    displayName="first name" pattern="[a-zA-Z]+"
-                    title="Use letters only"
-                    requirements="Should be alphabetic only"
-                />
-            </div>
-
-            <div>
-                <${TextInput} required=${true} name="last-name"
-                    displayName="last name" pattern="[a-zA-Z]+"
-                    title="Use letters only"
-                    requirements="Should be alphabetic only"
-                />
-            </div>
-
-            <div>
-                <${TextInput} required=${true} name="occupation"
-                    displayName="occupation"
-                />
-            </div>
-
-            <div>
-                <${TextInput} required=${true} name="ssn" maxLength="9"
-                    displayName="social security number" minLength="9"
-                    pattern="[0-9]+" title="9 digit number"
-                    requirements="Should be a 9 digit number"
-                />
-            </div>
-
-            <div className="item-controls add-controls">
-                <${SpinningButton} type="reset" isSpinning=${false}>
-                    Cancel
-                <//>
-
-                <${SpinningButton} type="submit" isSpinning=${resolving}>
-                    Save
-                </${SpinningButton}>
-            </div>
-        </form>
-
-    </div>`
-
+    return <div className="new-applicant">
+        <ApplicantForm resolving={resolving} applicant={null}
+            onSubmit={saveApplicant} onReset={reset}
+        />
+    </div>
     /* eslint-enable */
 }
 
