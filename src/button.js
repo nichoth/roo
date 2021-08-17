@@ -11,11 +11,11 @@ function SpinningButton (props) {
     return <span className="form-stuff">
         {isSpinning ?
             <button {..._props} className={cl + ' spinning'}
-                disabled={true}
+                disabled={true} type="button"
             >
                 <span className="btn-content">{props.children}</span>
             </button> :
-            <button {..._props}>
+            <button {..._props} type="button">
                 <span className="btn-content">{props.children}</span>
             </button>
         }

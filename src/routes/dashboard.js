@@ -22,7 +22,7 @@ function Dash ({ applicants, emit }) {
         return <div className="dashboard waiting">
             <h1>Applicants</h1>
             <ul>
-                <li className="placeholder"></li>
+                <li className="placeholder" />
             </ul>
         </div>
     }
