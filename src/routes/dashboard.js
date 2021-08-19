@@ -66,6 +66,7 @@ function Dash ({ applicants, emit }) {
             <div className="controls">
                 <a href="/add" className="add-btn"
                     title="add applicant"
+                    aria-label="Create a new applicant"
                 >
                     +
                 </a>
@@ -94,7 +95,9 @@ function Dash ({ applicants, emit }) {
                         <a href={'/update/' + i} className="edit-pencil"
                             title="edit"
                         >
-                            ✏
+                            <span role="img" aria-label="pencil">
+                                ✏
+                            </span>
                         </a>
                         <Trash className={'trash-btn'}
                             onClick={del(i)}

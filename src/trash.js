@@ -7,7 +7,7 @@ function Trash (props) {
         <button {...props} className={cl} title={props.title}
             type="button"
         >
-            🗑️
+            <span role="img" aria-label="delete">🗑️</span>
         </button>
     )
 }
