@@ -95,7 +95,7 @@ function Dash ({ applicants, emit }) {
                         <a href={'/update/' + i} className="edit-pencil"
                             title="edit"
                         >
-                            <span role="img" aria-label="pencil">
+                            <span role="img" aria-label="edit">
                                 ✏
                             </span>
                         </a>
